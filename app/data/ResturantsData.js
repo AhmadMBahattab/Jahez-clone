@@ -9,70 +9,70 @@ const resturantsArray = [
     menue: {
       mainDish: [
         {
-          mealName: "BBQ Chicken Tortilla Combo",
-          mealImage: require("../photos/herfyMenu/Combo Chicken Tortilla20009.png"),
-          mealPrice: "28.00",
+          name: "BBQ Chicken Tortilla Combo",
+          image: require("../photos/herfyMenu/Combo-Chicken-Tortilla20009.png"),
+          price: "28.00",
         },
         {
-          mealName: "Super Chicken Combo",
-          mealImage: require("../photos/herfyMenu/SuperChicken-new-crpd.jpg"),
-          mealPrice: "32.00",
+          name: "Super Chicken Combo",
+          image: require("../photos/herfyMenu/SuperChicken-new-crpd.jpg"),
+          price: "32.00",
         },
         {
-          mealName: "Grilled Chicken Combo",
-          mealImage: require("../photos/herfyMenu/06-GRILLEDCHICKEN.jpg"),
-          mealPrice: "26.00",
+          name: "Grilled Chicken Combo",
+          image: require("../photos/herfyMenu/06-GRILLEDCHICKEN.jpg"),
+          price: "26.00",
         },
       ],
       sideDish: [
         {
-          sideDishName: "9 Pieces Tender Chicken ",
-          sideDishImage: require("../photos/herfyMenu/9pcs Chicken Tender10017.png"),
-          sideDishPrice: "16.00",
+          name: "9 Pieces Tender Chicken ",
+          image: require("../photos/herfyMenu/9pcs-Chicken-Tender10017.png"),
+          price: "16.00",
         },
         {
-          sideDishName: "Nuggets Chicken 6p",
-          sideDishImage: require("../photos/herfyMenu/chicken_nugget.png"),
-          sideDishPrice: "9.00",
+          name: "Nuggets Chicken 6p",
+          image: require("../photos/herfyMenu/chicken_nugget.png"),
+          price: "9.00",
         },
       ],
       desserts: [
         {
-          sideDishName: "Cheesecake Strawbarry",
-          sideDishImage: require("../photos/herfyMenu/cheesecake strawbary.png"),
-          sideDishPrice: "12.00",
+          name: "Cheesecake Strawbarry",
+          image: require("../photos/herfyMenu/cheesecake-strawbary.png"),
+          price: "12.00",
         },
         {
-          sideDishName: "Apple pie",
-          sideDishImage: require("../photos/herfyMenu/Apple Pie.png"),
-          sideDishPrice: "5.00",
+          name: "Apple pie",
+          image: require("../photos/herfyMenu/Apple-Pie.png"),
+          price: "5.00",
         },
         {
-          sideDishName: "Cheesecake Plain",
-          sideDishImage: require("../photos/herfyMenu/Cheese Cake-Plain.png"),
-          sideDishPrice: "12.00",
+          name: "Cheesecake Plain",
+          image: require("../photos/herfyMenu/Cheese-Cake-Plain.png"),
+          price: "12.00",
         },
       ],
       drinks: [
         {
-          drinkName: "Coca Cola",
-          drinkImage: require("../photos/drinks/coca cola.jpg"),
-          drinkPrice: "5.00",
+          name: "Coca Cola",
+          image: require("../photos/drinks/coca-cola.jpg"),
+          price: "5.00",
         },
         {
-          drinkName: "Fanta Orange",
-          drinkImage: require("../photos/drinks/fanta orange.png"),
-          drinkPrice: "5.00",
+          name: "Fanta Orange",
+          image: require("../photos/drinks/fanta-orange.png"),
+          price: "5.00",
         },
         {
-          drinkName: "Sprite",
-          drinkImage: require("../photos/drinks/sprite.jpg"),
-          drinkPrice: "5.00",
+          name: "Sprite",
+          image: require("../photos/drinks/sprite.jpg"),
+          price: "5.00",
         },
         {
-          drinkName: "Water",
-          drinkImage: require("../photos/drinks/NOVA-water.png"),
-          drinkPrice: "3.00",
+          name: "Water",
+          image: require("../photos/drinks/NOVA-water.png"),
+          price: "3.00",
         },
       ],
     },
@@ -89,17 +89,17 @@ const resturantsArray = [
         {
           mealName: "Steak & Cheese",
           mealImage: require("../photos/subway/subway-steak-and-cheese-image.jpg"),
-          mealPrice: "32.90",
+          price: "32.90",
         },
         {
           mealName: "Chicken Teriyaki",
           mealImage: require("../photos/subway/teriaki chicken.jpg"),
-          mealPrice: "30.00",
+          price: "30.00",
         },
         {
           mealName: "Oven Roasted Chicken",
           mealImage: require("../photos/subway/subway-6-inch-oven-roasted-sub.jpg"),
-          mealPrice: "32.00",
+          price: "32.00",
         },
       ],
       sideDish: [
@@ -118,12 +118,12 @@ const resturantsArray = [
       drinks: [
         {
           drinkName: "Coca Cola",
-          drinkImage: require("../photos/drinks/coca cola.jpg"),
+          drinkImage: require("../photos/drinks/coca-cola.jpg"),
           drinkPrice: "5.00",
         },
         {
           drinkName: "Fanta Orange",
-          drinkImage: require("../photos/drinks/fanta orange.png"),
+          drinkImage: require("../photos/drinks/fanta-orange.png"),
           drinkPrice: "5.00",
         },
         {
@@ -151,7 +151,7 @@ const resturantsArray = [
         {
           mealName: "وجبة دبل هامبرغيني",
           mealImage: require("../photos/humbrgini/duoble humbrgini meal.png"),
-          mealPrice: "36.00",
+          price: "36.00",
         },
         {
           mealName: "وجبة سنقل كلاسيك",
@@ -185,12 +185,12 @@ const resturantsArray = [
       drinks: [
         {
           drinkName: "Coca Cola",
-          drinkImage: require("../photos/drinks/coca cola.jpg"),
+          drinkImage: require("../photos/drinks/coca-cola.jpg"),
           drinkPrice: "5.00",
         },
         {
           drinkName: "Fanta Orange",
-          drinkImage: require("../photos/drinks/fanta orange.png"),
+          drinkImage: require("../photos/drinks/fanta-orange.png"),
           drinkPrice: "5.00",
         },
         {
@@ -268,12 +268,12 @@ const resturantsArray = [
       drinks: [
         {
           drinkName: "Coca Cola",
-          drinkImage: require("../photos/drinks/coca cola.jpg"),
+          drinkImage: require("../photos/drinks/coca-cola.jpg"),
           drinkPrice: "5.00",
         },
         {
           drinkName: "Fanta Orange",
-          drinkImage: require("../photos/drinks/fanta orange.png"),
+          drinkImage: require("../photos/drinks/fanta-orange.png"),
           drinkPrice: "5.00",
         },
         {
@@ -335,12 +335,12 @@ const resturantsArray = [
       drinks: [
         {
           drinkName: "Coca Cola",
-          drinkImage: require("../photos/drinks/coca cola.jpg"),
+          drinkImage: require("../photos/drinks/coca-cola.jpg"),
           drinkPrice: "5.00",
         },
         {
           drinkName: "Fanta Orange",
-          drinkImage: require("../photos/drinks/fanta orange.png"),
+          drinkImage: require("../photos/drinks/fanta-orange.png"),
           drinkPrice: "5.00",
         },
         {
