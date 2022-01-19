@@ -13,9 +13,18 @@ import SingleResturant from "../components/reusable/singleResturant";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const SingleResturantScreen = ({ resturant }) => {
-  const [singleResturant, setsingleResturant] = useState(resturant[0]);
+const SingleResturantScreen = ({ route }) => {
+  const [singleResturant, setsingleResturant] = useState({ ...route.params });
+  const [isFullMenu, setisFullMenu] = useState(false);
+  const [isSingleMenu, setisSingleMenu] = useState(false);
+  const [isMainDishs, setisMainDishs] = useState(false);
+  const [isSideDishs, setisSideDishs] = useState(false);
+  const [isSweets, setisSweets] = useState(false);
+  const [isDrinks, setisDrinks] = useState(false);
+  console.log(route.params);
+
   const [arrayOfMenuItems, setarrayOfMenuItems] = useState(null);
+  const [arrayOfTypeOfMenu, setarrayOfTypeOfMenu] = useState(null);
 
   function preperMenu(object) {
     let arrayOfObjects = [];
@@ -24,20 +33,48 @@ const SingleResturantScreen = ({ resturant }) => {
       arrayOfObjects.push(object[i]);
     }
     setarrayOfMenuItems(arrayOfObjects);
+    setisFullMenu(true);
   }
 
   useEffect(() => {
     preperMenu(singleResturant.menue);
   }, []);
 
-  console.log("space");
-
+  const sortToFullMenu = () => {
+    setisFullMenu(true);
+    setisSingleMenu(false);
+  };
+  const sortToMainDishs = () => {
+    let mainMenu = [...singleResturant.menue.mainDish];
+    setarrayOfTypeOfMenu([...mainMenu]);
+    setisFullMenu(false);
+    setisSingleMenu(true);
+    console.log("hooola", arrayOfTypeOfMenu);
+  };
+  const sortToSideDishs = () => {
+    let sideMenu = [...singleResturant.menue.sideDish];
+    setarrayOfTypeOfMenu([...sideMenu]);
+    setisFullMenu(false);
+    setisSingleMenu(true);
+  };
+  const sortToDesserts = () => {
+    let desserts = [...singleResturant.menue.desserts];
+    setarrayOfTypeOfMenu([...desserts]);
+    setisFullMenu(false);
+    setisSingleMenu(true);
+  };
+  const sortToDrinks = () => {
+    let drinks = [...singleResturant.menue.drinks];
+    setarrayOfTypeOfMenu([...drinks]);
+    setisFullMenu(false);
+    setisSingleMenu(true);
+  };
   return (
     <View style={styles.container}>
       <ScrollView style={styles.menuContainer}>
         <SingleResturant item={singleResturant} />
 
-        {arrayOfMenuItems &&
+        {arrayOfMenuItems && isFullMenu ? (
           arrayOfMenuItems.map((menu) => (
             <>
               {menu.map((item, index) => (
@@ -45,7 +82,7 @@ const SingleResturantScreen = ({ resturant }) => {
                   <View style={styles.image}>
                     <Image
                       source={item.image}
-                      style={{ width: windowWidth, height: windowHeight / 5 }}
+                      style={{ width: windowWidth, height: windowHeight / 4 }}
                     />
                   </View>
                   <View style={styles.info}>
@@ -55,24 +92,47 @@ const SingleResturantScreen = ({ resturant }) => {
                 </View>
               ))}
             </>
+          ))
+        ) : (
+          <View
+            style={{ justifyContent: "center", alignItems: "center" }}
+          ></View>
+        )}
+
+        {isSingleMenu &&
+          arrayOfTypeOfMenu.map((item, index) => (
+            <>
+              <View style={styles.singleMenuItem} key={index}>
+                <View style={styles.image}>
+                  <Image
+                    source={item.image}
+                    style={{ width: windowWidth, height: windowHeight / 4 }}
+                  />
+                </View>
+                <View style={styles.info}>
+                  <Text>{item.name}</Text>
+                  <Text>{item.price} SAR</Text>
+                </View>
+              </View>
+            </>
           ))}
       </ScrollView>
 
       <View style={styles.menuNavBarContainer}>
         <ScrollView style={styles.menuNavBarScroll} horizontal={true}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={sortToFullMenu}>
             <Text style={styles.singleNavBarItem}>القائمة كاملة</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={sortToMainDishs}>
             <Text style={styles.singleNavBarItem}>الوجبات الرئيسية</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={sortToSideDishs}>
             <Text style={styles.singleNavBarItem}>الطلبات الجانبية</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={sortToDesserts}>
             <Text style={styles.singleNavBarItem}>الحلويات</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={sortToDrinks}>
             <Text style={styles.singleNavBarItem}>المشروبات</Text>
           </TouchableOpacity>
         </ScrollView>

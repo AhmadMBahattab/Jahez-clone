@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   Dimensions,
+  Button,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
@@ -19,7 +20,9 @@ const MainScreen = ({ resturantsArray }) => {
     <>
       <ScrollView>
         {resturantsArray.map((item) => (
-          <SingleResturant item={item} key={item.id} />
+          <View key={item.id}>
+            <SingleResturant item={item} />
+          </View>
         ))}
       </ScrollView>
     </>

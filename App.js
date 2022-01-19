@@ -8,13 +8,11 @@ import ResturantsData from "./app/data/ResturantsData";
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    //   <AppNavigator />
-    // </NavigationContainer>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
 
-    <>
-      <SingleResturantScreen resturant={ResturantsData.getResturants()} />
-    </>
+    /* <SingleResturantScreen resturant={ResturantsData.getResturants()} /> */
   );
 }
 

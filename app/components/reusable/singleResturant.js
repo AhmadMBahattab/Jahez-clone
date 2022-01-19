@@ -10,11 +10,12 @@ import {
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
-
+import { useNavigation } from "@react-navigation/native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const SingleResturant = ({ item }) => {
+  const navigation = useNavigation();
   const [liked, setliked] = useState(false);
   const rightAction = () => {
     return (
@@ -33,31 +34,33 @@ const SingleResturant = ({ item }) => {
 
   return (
     <Swipeable renderRightActions={rightAction}>
-      <TouchableOpacity>
-        <View style={styles.singeResturantContainer}>
-          <View style={styles.image}>
-            <Image
-              source={item.image}
-              style={{ width: windowWidth / 5, height: windowWidth / 5 }}
-            />
-          </View>
-          <View style={styles.infoContainer}>
-            <View style={styles.singleInfoLayout}>
-              <Text style={{ fontSize: 20 }}>
-                {item.nameEN} - {item.nameArb}
-              </Text>
+      <>
+        <TouchableOpacity onPress={() => navigation.navigate("القائمة", item)}>
+          <View style={styles.singeResturantContainer}>
+            <View style={styles.image}>
+              <Image
+                source={item.image}
+                style={{ width: windowWidth / 5, height: windowWidth / 5 }}
+              />
+            </View>
+            <View style={styles.infoContainer}>
+              <View style={styles.singleInfoLayout}>
+                <Text style={{ fontSize: 20 }}>
+                  {item.nameEN} - {item.nameArb}
+                </Text>
 
-              <Text style={{ fontSize: 14, color: "gray" }}>6.0 Kms</Text>
-            </View>
-            <View style={styles.singleInfoLayout}>
-              <Text style={{ fontSize: 14, color: "green" }}>مفتوح</Text>
-              <Text style={{ fontSize: 14, color: "gray" }}>
-                {item.avalibaleTime.open} -{item.avalibaleTime.close}
-              </Text>
+                <Text style={{ fontSize: 14, color: "gray" }}>6.0 Kms</Text>
+              </View>
+              <View style={styles.singleInfoLayout}>
+                <Text style={{ fontSize: 14, color: "green" }}>مفتوح</Text>
+                <Text style={{ fontSize: 14, color: "gray" }}>
+                  {item.avalibaleTime.open} -{item.avalibaleTime.close}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </>
     </Swipeable>
   );
 };
