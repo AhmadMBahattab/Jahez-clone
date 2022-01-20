@@ -13,7 +13,11 @@ const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Main navigator" component={MainNavigator} />
+      <Drawer.Screen
+        name="Main navigator"
+        component={MainNavigator}
+        options={{ headerShown: false }}
+      />
     </Drawer.Navigator>
   );
 };
