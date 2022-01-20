@@ -9,10 +9,15 @@ import {
   Button,
   StatusBar,
 } from "react-native";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
+
+import {
+  MaterialCommunityIcons,
+  SimpleLineIcons,
+  FontAwesome,
+} from "@expo/vector-icons";
 import SingleResturant from "../components/reusable/singleResturant";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -23,15 +28,31 @@ const MainScreen = ({ resturantsArray }) => {
     <>
       <View style={styles.navBarContainer}>
         <View style={styles.singleNavBarItem}>
-          <Text>Buu</Text>
-          <Text>buut</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          >
+            <MaterialCommunityIcons name="menu" color={"white"} size={20} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <SimpleLineIcons name="location-pin" color={"white"} size={20} />
+          </TouchableOpacity>
+          <Text></Text>
         </View>
         <View style={styles.singleNavBarItem}>
+          <Text></Text>
           <Text>Jahez</Text>
+          <Text></Text>
         </View>
         <View style={styles.singleNavBarItem}>
-          <Text>Location</Text>
-          <Text>menu</Text>
+          <Text></Text>
+          <TouchableOpacity>
+            <FontAwesome name="search" color={"white"} size={20} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <FontAwesome name="sort" color={"white"} size={20} />
+          </TouchableOpacity>
         </View>
       </View>
       <ScrollView>
@@ -40,12 +61,6 @@ const MainScreen = ({ resturantsArray }) => {
             <SingleResturant item={item} />
           </View>
         ))}
-        <Button
-          title="test"
-          onPress={() => {
-            navigation.openDrawer();
-          }}
-        />
       </ScrollView>
     </>
   );
@@ -58,13 +73,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     backgroundColor: "red",
-    height: StatusBar.currentHeight * 2,
+    height: StatusBar.currentHeight * 3,
   },
   singleNavBarItem: {
-    marginTop: StatusBar.currentHeight,
+    marginTop: StatusBar.currentHeight * 1.5,
+    width: windowWidth / 5,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "orange",
+    color: "white",
   },
 });
 
