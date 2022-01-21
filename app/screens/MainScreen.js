@@ -18,6 +18,7 @@ import {
 import SingleResturant from "../components/reusable/singleResturant";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+const jahezTitle = require("../photos/jahez-title.jpg");
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -40,9 +41,12 @@ const MainScreen = ({ resturantsArray }) => {
           </TouchableOpacity>
           <Text></Text>
         </View>
-        <View style={styles.singleNavBarItem}>
+        <View style={[styles.singleNavBarItem, { width: windowWidth / 4 }]}>
           <Text></Text>
-          <Text>Jahez</Text>
+          <Image
+            source={jahezTitle}
+            style={{ width: windowWidth / 4, height: 30 }}
+          />
           <Text></Text>
         </View>
         <View style={styles.singleNavBarItem}>
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     backgroundColor: "red",
-    height: StatusBar.currentHeight * 3,
+    height: StatusBar.currentHeight * 2.5,
   },
   singleNavBarItem: {
     marginTop: StatusBar.currentHeight * 1.5,

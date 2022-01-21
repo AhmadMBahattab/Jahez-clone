@@ -40,20 +40,20 @@ const SingleResturant = ({ item }) => {
             <View style={styles.image}>
               <Image
                 source={item.image}
-                style={{ width: windowWidth / 5, height: windowWidth / 5 }}
+                style={{ width: windowWidth / 6, height: windowWidth / 6 }}
               />
             </View>
             <View style={styles.infoContainer}>
               <View style={styles.singleInfoLayout}>
-                <Text style={{ fontSize: 20 }}>
+                <Text style={{ fontSize: 16 }}>
                   {item.nameEN} - {item.nameArb}
                 </Text>
 
-                <Text style={{ fontSize: 14, color: "gray" }}>6.0 Kms</Text>
+                <Text style={{ fontSize: 12, color: "gray" }}>6.0 Kms</Text>
               </View>
               <View style={styles.singleInfoLayout}>
-                <Text style={{ fontSize: 14, color: "green" }}>مفتوح</Text>
-                <Text style={{ fontSize: 14, color: "gray" }}>
+                <Text style={{ fontSize: 12, color: "green" }}>مفتوح</Text>
+                <Text style={{ fontSize: 12, color: "gray" }}>
                   {item.avalibaleTime.open} -{item.avalibaleTime.close}
                 </Text>
               </View>
