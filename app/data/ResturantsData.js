@@ -4,6 +4,10 @@ const resturantsArray = [
     nameEN: "Herfy",
     nameArb: "هرفي",
     type: "",
+    location: {
+      latitude: 24.4216146,
+      longitude: 46.6417285,
+    },
     avalibaleTime: { open: "6:00 am", close: "10:00 pm" },
     image: require("../photos/Herfy_logo.png"),
     menue: {
@@ -82,6 +86,10 @@ const resturantsArray = [
     nameEN: "Subway",
     nameArb: "صب واي",
     type: "",
+    location: {
+      latitude: 24.7836146,
+      longitude: 46.6417285,
+    },
     avalibaleTime: { open: "6:00 am", close: "10:00 pm" },
     image: require("../photos/Subway-logo.png"),
     menue: {
@@ -144,6 +152,10 @@ const resturantsArray = [
     nameEN: "Hamburgini",
     nameArb: "هامبرقيني",
     type: "",
+    location: {
+      latitude: 24.7213146,
+      longitude: 46.6737285,
+    },
     avalibaleTime: { open: "12:00 pm", close: "2:00 am" },
     image: require("../photos/hamburgini-logo.png"),
     menue: {
@@ -211,6 +223,10 @@ const resturantsArray = [
     nameEN: "Dominos pizza",
     nameArb: "دومينوز بيتزا",
     type: "",
+    location: {
+      latitude: 24.6216146,
+      longitude: 46.6317285,
+    },
     avalibaleTime: { open: "12:00 pm", close: "1:00 am" },
     image: require("../photos/Dominos_pizza_logo.png"),
     menue: {
@@ -294,6 +310,10 @@ const resturantsArray = [
     nameEN: "Burger king",
     nameArb: "برغر كنق",
     type: "",
+    location: {
+      latitude: 24.7213146,
+      longitude: 46.6917285,
+    },
     avalibaleTime: { open: "12:00 pm", close: "1:00 am" },
     image: require("../photos/Burger-King-Logo.png"),
     menue: {

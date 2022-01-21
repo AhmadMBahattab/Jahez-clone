@@ -1,64 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import NavBar from "../components/main/NavBar";
+import SingleResturant from "../components/reusable/singleResturant";
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
-  Image,
   Dimensions,
-  Button,
-  StatusBar,
+  Image,
 } from "react-native";
-
-import {
-  MaterialCommunityIcons,
-  SimpleLineIcons,
-  FontAwesome,
-} from "@expo/vector-icons";
-import SingleResturant from "../components/reusable/singleResturant";
+import { Button, Overlay, Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-const jahezTitle = require("../photos/jahez-title.jpg");
+import * as Location from "expo-location";
+
+import MapView, { Marker, Callout } from "react-native-maps";
+import ResturantsLocations from "../components/main/ResturantsLocations";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const MainScreen = ({ resturantsArray }) => {
-  const navigation = useNavigation();
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [locationEnabeled, setlocationEnabeled] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      setlocationEnabeled(true);
+      let location = await Location.getCurrentPositionAsync({});
+
+      setLocation(location);
+    })();
+  }, []);
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
   return (
     <>
-      <View style={styles.navBarContainer}>
-        <View style={styles.singleNavBarItem}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          >
-            <MaterialCommunityIcons name="menu" color={"white"} size={20} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <SimpleLineIcons name="location-pin" color={"white"} size={20} />
-          </TouchableOpacity>
-          <Text></Text>
-        </View>
-        <View style={[styles.singleNavBarItem, { width: windowWidth / 4 }]}>
-          <Text></Text>
-          <Image
-            source={jahezTitle}
-            style={{ width: windowWidth / 4, height: 30 }}
-          />
-          <Text></Text>
-        </View>
-        <View style={styles.singleNavBarItem}>
-          <Text></Text>
-          <TouchableOpacity>
-            <FontAwesome name="search" color={"white"} size={20} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <FontAwesome name="sort" color={"white"} size={20} />
-          </TouchableOpacity>
-        </View>
-      </View>
+      <NavBar openMap={toggleOverlay} />
+      <ResturantsLocations
+        resturantsArray={resturantsArray}
+        visible={visible}
+        closeMap={toggleOverlay}
+      />
       <ScrollView>
         {resturantsArray.map((item) => (
           <View key={item.id}>
@@ -70,22 +63,6 @@ const MainScreen = ({ resturantsArray }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  navBarContainer: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    backgroundColor: "red",
-    height: StatusBar.currentHeight * 2.5,
-  },
-  singleNavBarItem: {
-    marginTop: StatusBar.currentHeight * 1.5,
-    width: windowWidth / 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    color: "white",
-  },
-});
+const styles = StyleSheet.create({});
 
 export default MainScreen;
