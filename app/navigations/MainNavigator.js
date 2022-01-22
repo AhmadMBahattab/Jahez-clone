@@ -11,6 +11,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 import { useNavigation } from "@react-navigation/native";
+import WalletScreen from "../screens/WalletScreen";
 
 const Stack = createStackNavigator();
 

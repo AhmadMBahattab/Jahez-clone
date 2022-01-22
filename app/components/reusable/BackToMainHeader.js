@@ -7,24 +7,17 @@ import {
   StatusBar,
   Dimensions,
 } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import MainScreen from "../../screens/MainScreen";
-import ResturantsData from "../../data/ResturantsData";
-import SingleResturantScreen from "../../screens/SingleResturantScreen";
 import {
   MaterialCommunityIcons,
   MaterialIcons,
   FontAwesome,
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-import { useNavigation } from "@react-navigation/native";
-
-const Stack = createStackNavigator();
-
-const ResturantHeader = () => {
+const BackToMainHeader = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
@@ -44,18 +37,7 @@ const ResturantHeader = () => {
 
       <View style={styles.singleHeaderItem}></View>
 
-      <View style={styles.singleHeaderItem}>
-        <TouchableOpacity>
-          <FontAwesome name="search" color={"white"} size={22} />
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <MaterialCommunityIcons name="cart" color={"white"} size={22} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MaterialIcons name="more-vert" color={"white"} size={22} />
-        </TouchableOpacity>
-      </View>
+      <View style={styles.singleHeaderItem}></View>
     </View>
   );
 };
@@ -77,4 +59,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-export default ResturantHeader;
+
+export default BackToMainHeader;

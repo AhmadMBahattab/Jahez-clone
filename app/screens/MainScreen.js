@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/main/NavBar";
+import ResturantsLocations from "../components/main/ResturantsLocations";
 import SingleResturant from "../components/reusable/singleResturant";
 import {
   View,
@@ -9,15 +10,7 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import { Button, Overlay, Icon } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
 import * as Location from "expo-location";
-
-import MapView, { Marker, Callout } from "react-native-maps";
-import ResturantsLocations from "../components/main/ResturantsLocations";
-
-const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
 
 const MainScreen = ({ resturantsArray }) => {
   const [location, setLocation] = useState(null);
