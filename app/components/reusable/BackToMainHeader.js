@@ -17,7 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const BackToMainHeader = () => {
+const BackToMainHeader = ({ title }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
@@ -32,7 +32,7 @@ const BackToMainHeader = () => {
             />
           </View>
         </TouchableOpacity>
-        <Text style={{ fontSize: 20, color: "white" }}>القائمة</Text>
+        <Text style={{ fontSize: 20, color: "white" }}>{title}</Text>
       </View>
 
       <View style={styles.singleHeaderItem}></View>

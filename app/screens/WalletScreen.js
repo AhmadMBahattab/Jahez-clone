@@ -5,7 +5,7 @@ import BackToMainHeader from "../components/reusable/BackToMainHeader";
 const WalletScreen = () => {
   return (
     <>
-      <BackToMainHeader />
+      <BackToMainHeader title={"المحفظة"} />
       <View style={styles.container}>
         <Text>Wallet</Text>
       </View>

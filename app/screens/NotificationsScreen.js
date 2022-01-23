@@ -5,7 +5,7 @@ import BackToMainHeader from "../components/reusable/BackToMainHeader";
 const NotificationsScreen = () => {
   return (
     <>
-      <BackToMainHeader />
+      <BackToMainHeader title={"الاشعارات"} />
       <View style={styles.container}>
         <Text>Notifications</Text>
       </View>

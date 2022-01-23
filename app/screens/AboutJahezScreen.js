@@ -5,7 +5,7 @@ import BackToMainHeader from "../components/reusable/BackToMainHeader";
 const AboutJahezScreen = () => {
   return (
     <>
-      <BackToMainHeader />
+      <BackToMainHeader title={"عن جاهز"} />
       <View style={styles.container}>
         <Text>About Jahez</Text>
       </View>

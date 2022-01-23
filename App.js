@@ -9,7 +9,7 @@ import ResturantsData from "./app/data/ResturantsData";
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-      <View style={styles.statusBarContainer}></View>
+      <StatusBar barStyle={"light-content"} backgroundColor={"red"} />
       <NavigationContainer>
         <AppNavigator />
       </NavigationContainer>
@@ -24,9 +24,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     marginTop: StatusBar.currentHeight,
-  },
-  statusBarContainer: {
-    backgroundColor: "red",
-    height: StatusBar.currentHeight,
   },
 });

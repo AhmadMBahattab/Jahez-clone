@@ -5,7 +5,7 @@ import BackToMainHeader from "../components/reusable/BackToMainHeader";
 const OrderScreen = () => {
   return (
     <>
-      <BackToMainHeader />
+      <BackToMainHeader title={"طلباتي"} />
       <View style={styles.container}>
         <Text>Orders</Text>
       </View>

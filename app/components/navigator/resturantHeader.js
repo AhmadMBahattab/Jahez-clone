@@ -63,14 +63,14 @@ const ResturantHeader = () => {
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: "red",
-    height: StatusBar.currentHeight * 2.5,
+    height: StatusBar.currentHeight * 2,
     justifyContent: "space-between",
     paddingLeft: 10,
     paddingRight: 10,
     flexDirection: "row",
   },
   singleHeaderItem: {
-    marginTop: StatusBar.currentHeight * 1.5,
+    marginTop: StatusBar.currentHeight * 1,
     width: windowWidth / 3.5,
     flexDirection: "row",
     justifyContent: "space-between",

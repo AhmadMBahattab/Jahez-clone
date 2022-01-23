@@ -5,7 +5,7 @@ import BackToMainHeader from "../components/reusable/BackToMainHeader";
 const CallUsScreen = () => {
   return (
     <>
-      <BackToMainHeader />
+      <BackToMainHeader title={"اتصل بنا"} />
       <View style={styles.container}>
         <Text>Call us</Text>
       </View>
