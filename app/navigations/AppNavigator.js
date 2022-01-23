@@ -33,6 +33,7 @@ const AppNavigator = () => {
               <MaterialIcons name="home" size={20} color={"red"} />
             </View>
           ),
+          drawerLabelStyle: { color: "red" },
         }}
       />
       <Drawer.Screen
@@ -45,6 +46,7 @@ const AppNavigator = () => {
               <MaterialIcons name="payment" size={20} color={"red"} />
             </View>
           ),
+          drawerLabelStyle: { color: "red" },
         }}
       />
       <Drawer.Screen
@@ -61,6 +63,7 @@ const AppNavigator = () => {
               />
             </View>
           ),
+          drawerLabelStyle: { color: "red" },
         }}
       />
       <Drawer.Screen
@@ -77,6 +80,8 @@ const AppNavigator = () => {
               />
             </View>
           ),
+
+          drawerLabelStyle: { color: "red" },
         }}
       />
       <Drawer.Screen
@@ -87,6 +92,7 @@ const AppNavigator = () => {
           drawerIcon: () => (
             <FontAwesome5 name="dot-circle" size={24} color={"red"} />
           ),
+          drawerLabelStyle: { color: "red" },
         }}
       />
       <Drawer.Screen
@@ -99,6 +105,7 @@ const AppNavigator = () => {
               <Foundation name="telephone" size={20} color={"red"} />
             </View>
           ),
+          drawerLabelStyle: { color: "red" },
         }}
       />
     </Drawer.Navigator>

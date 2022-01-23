@@ -8,9 +8,12 @@ import ResturantsData from "./app/data/ResturantsData";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+    <View style={{ flex: 1 }}>
+      <View style={styles.statusBarContainer}></View>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </View>
 
     /* <SingleResturantScreen resturant={ResturantsData.getResturants()} /> */
   );
@@ -21,5 +24,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     marginTop: StatusBar.currentHeight,
+  },
+  statusBarContainer: {
+    backgroundColor: "red",
+    height: StatusBar.currentHeight,
   },
 });

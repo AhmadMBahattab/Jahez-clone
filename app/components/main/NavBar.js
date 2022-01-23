@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     backgroundColor: "red",
-    height: StatusBar.currentHeight * 2.5,
+    height: StatusBar.currentHeight * 2,
   },
   singleNavBarItem: {
-    marginTop: StatusBar.currentHeight * 1.5,
+    marginTop: StatusBar.currentHeight,
     width: windowWidth / 5,
     flexDirection: "row",
     justifyContent: "space-between",
