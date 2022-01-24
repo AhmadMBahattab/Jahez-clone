@@ -9,6 +9,8 @@ import NotificationsScreen from "../screens/NotificationsScreen";
 import AboutJahezScreen from "../screens/AboutJahezScreen";
 import CallUsScreen from "../screens/CallUsScreen";
 import CustomDrawer from "../components/navigator/CustomDrawer";
+import PolicyScreen from "../screens/PolicyScreen";
+import SupportScreen from "../screens/SupportScreen";
 
 import {
   Ionicons,
@@ -17,6 +19,7 @@ import {
   FontAwesome5,
   Foundation,
 } from "@expo/vector-icons";
+import AccountScreen from "../screens/AccountScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -103,6 +106,45 @@ const AppNavigator = () => {
           drawerIcon: () => (
             <View style={styles.iconStyleContainer}>
               <Foundation name="telephone" size={20} color={"red"} />
+            </View>
+          ),
+          drawerLabelStyle: { color: "red" },
+        }}
+      />
+      <Drawer.Screen
+        name="سياستنا"
+        component={PolicyScreen}
+        options={{
+          headerShown: false,
+          drawerIcon: () => (
+            <View style={styles.iconStyleContainer}>
+              <Ionicons name="shield-outline" size={20} color={"red"} />
+            </View>
+          ),
+          drawerLabelStyle: { color: "red" },
+        }}
+      />
+      <Drawer.Screen
+        name="الدعم"
+        component={SupportScreen}
+        options={{
+          headerShown: false,
+          drawerIcon: () => (
+            <View style={styles.iconStyleContainer}>
+              <MaterialIcons name="message" size={20} color={"red"} />
+            </View>
+          ),
+          drawerLabelStyle: { color: "red" },
+        }}
+      />
+      <Drawer.Screen
+        name="حسابي"
+        component={AccountScreen}
+        options={{
+          headerShown: false,
+          drawerIcon: () => (
+            <View style={styles.iconStyleContainer}>
+              <MaterialCommunityIcons name="account" size={20} color={"red"} />
             </View>
           ),
           drawerLabelStyle: { color: "red" },
