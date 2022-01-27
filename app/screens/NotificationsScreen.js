@@ -7,7 +7,9 @@ const NotificationsScreen = () => {
     <>
       <BackToMainHeader title={"الاشعارات"} />
       <View style={styles.container}>
-        <Text>Notifications</Text>
+        <Text style={{ color: "gray", fontSize: 18 }}>
+          لا يوجد اشعارات حتى هذه اللحظة
+        </Text>
       </View>
     </>
   );
@@ -16,6 +18,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
+    flex: 0.5,
   },
 });
 

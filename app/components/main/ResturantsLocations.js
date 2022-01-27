@@ -25,8 +25,8 @@ const ResturantsLocations = ({ resturantsArray, visible, closeMap }) => {
               longitudeDelta: 2.6421,
             }}
           >
-            {resturantsArray.map((item) => (
-              <View>
+            {resturantsArray.map((item, index) => (
+              <View key={index}>
                 <Marker
                   coordinate={{
                     latitude: item.location.latitude,
