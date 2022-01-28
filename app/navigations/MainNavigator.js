@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, StatusBar, Dimensions } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "../screens/MainScreen";
 import ResturantsData from "../data/ResturantsData";
-import SingleResturantScreen from "../screens/SingleResturantScreen";
+import SingleResturantScreen from "../screens/singleResturant/SingleResturantScreen";
 
 import ResturantHeader from "../components/navigator/resturantHeader";
 
@@ -12,6 +12,7 @@ const windowHeight = Dimensions.get("window").height;
 
 import { useNavigation } from "@react-navigation/native";
 import WalletScreen from "../screens/WalletScreen";
+import singleMenuItemScreen from "../screens/singleResturant/singleMenuItemScreen";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,13 @@ const MainNavigator = () => {
           header: (props) => <ResturantHeader />,
         }}
         component={SingleResturantScreen}
+      />
+      <Stack.Screen
+        name="الصنف"
+        // options={{
+        //   header: (props) => <ResturantHeader />,
+        // }}
+        component={singleMenuItemScreen}
       />
     </Stack.Navigator>
   );

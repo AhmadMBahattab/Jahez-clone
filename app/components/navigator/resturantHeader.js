@@ -10,7 +10,7 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "../../screens/MainScreen";
 import ResturantsData from "../../data/ResturantsData";
-import SingleResturantScreen from "../../screens/SingleResturantScreen";
+import SingleResturantScreen from "../../screens/singleResturant/SingleResturantScreen";
 import {
   MaterialCommunityIcons,
   MaterialIcons,

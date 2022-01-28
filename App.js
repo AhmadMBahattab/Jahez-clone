@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./app/navigations/AppNavigator";
+import SingleMenuItemScreen from "./app/screens/singleResturant/singleMenuItemScreen";
 
 export default function App() {
   return (
@@ -25,6 +26,8 @@ export default function App() {
           <AppNavigator />
         </NavigationContainer>
       )}
+
+      {/* <SingleMenuItemScreen /> */}
     </View>
 
     /* <SingleResturantScreen resturant={ResturantsData.getResturants()} /> */

@@ -8,20 +8,17 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import SingleResturant from "../components/reusable/singleResturant";
+import SingleResturant from "../../components/reusable/singleResturant";
+import { useNavigation } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const SingleResturantScreen = ({ route }) => {
+  const navigation = useNavigation();
   const [singleResturant, setsingleResturant] = useState({ ...route.params });
   const [isFullMenu, setisFullMenu] = useState(false);
   const [isSingleMenu, setisSingleMenu] = useState(false);
-  const [isMainDishs, setisMainDishs] = useState(false);
-  const [isSideDishs, setisSideDishs] = useState(false);
-  const [isSweets, setisSweets] = useState(false);
-  const [isDrinks, setisDrinks] = useState(false);
-  console.log(route.params);
 
   const [arrayOfMenuItems, setarrayOfMenuItems] = useState(null);
   const [arrayOfTypeOfMenu, setarrayOfTypeOfMenu] = useState(null);
@@ -78,18 +75,31 @@ const SingleResturantScreen = ({ route }) => {
           arrayOfMenuItems.map((menu) => (
             <>
               {menu.map((item, index) => (
-                <View style={styles.singleMenuItem} key={index}>
-                  <View style={styles.image}>
-                    <Image
-                      source={item.image}
-                      style={{ width: windowWidth, height: windowHeight / 4 }}
-                    />
-                  </View>
-                  <View style={styles.info}>
-                    <Text>{item.name}</Text>
-                    <Text>{item.price} SAR</Text>
-                  </View>
-                </View>
+                <>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate("الصنف", {
+                        ...item,
+                      })
+                    }
+                  >
+                    <View style={styles.singleMenuItem} key={index}>
+                      <View style={styles.image}>
+                        <Image
+                          source={item.image}
+                          style={{
+                            width: windowWidth,
+                            height: windowHeight / 4,
+                          }}
+                        />
+                      </View>
+                      <View style={styles.info}>
+                        <Text>{item.name}</Text>
+                        <Text>{item.price} SAR</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </>
               ))}
             </>
           ))
