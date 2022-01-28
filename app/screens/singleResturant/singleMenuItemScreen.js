@@ -45,33 +45,41 @@ const singleMenuItemScreen = ({ route }) => {
           }}
         />
       </View>
+      <View style={styles.itemName}>
+        <View>
+          <FontAwesome name="dot-circle-o" size={24} color="orange" />
+        </View>
+        <Text style={{ marginLeft: 20 }}>{singleMenuItem.name}</Text>
+      </View>
       <View style={styles.kindContainer}></View>
+
       <View style={styles.addContainer}>
         <View style={styles.addButton}>
           <View style={styles.singleInfo}>
-            <TouchableOpacity>
-              <View style={[styles.singleButton, { backgroundColor: "red" }]}>
-                <FontAwesome name="check" size={20} color="orange" />
+            <TouchableOpacity onPress={decreeseItems}>
+              <View
+                style={[styles.singleButton, { backgroundColor: "#FFC107" }]}
+              >
+                <AntDesign name="minus" size={20} color="red" />
               </View>
             </TouchableOpacity>
-            <Text style={{ marginLeft: 10 }}>اضف الى السلة</Text>
-          </View>
-          <Text>{singleMenuItem.price}</Text>
-          <View style={styles.singleInfo}>
+
+            <Text style={{ fontSize: 20 }}>{numOfSingleMenuItem}</Text>
+
             <TouchableOpacity onPress={increeseItems}>
               <View style={[styles.singleButton, { backgroundColor: "red" }]}>
                 <AntDesign name="plus" size={20} color="orange" />
               </View>
             </TouchableOpacity>
-            <Text style={{ fontSize: 20 }}>{numOfSingleMenuItem}</Text>
+          </View>
+
+          <Text>{singleMenuItem.price}</Text>
+          <View style={styles.singleInfo}>
+            <Text style={{ marginRight: 10 }}>اضف الى السلة</Text>
             <TouchableOpacity>
-              <TouchableOpacity onPress={decreeseItems}>
-                <View
-                  style={[styles.singleButton, { backgroundColor: "#FFC107" }]}
-                >
-                  <AntDesign name="minus" size={20} color="red" />
-                </View>
-              </TouchableOpacity>
+              <View style={[styles.singleButton, { backgroundColor: "red" }]}>
+                <FontAwesome name="check" size={20} color="orange" />
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -83,8 +91,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  imageContainer: {
+    backgroundColor: "white",
+  },
+  itemName: {
+    marginTop: 10,
+    backgroundColor: "white",
+    padding: 20,
+    flexDirection: "row",
+  },
   addContainer: {
-    backgroundColor: "red",
     justifyContent: "flex-end",
     flex: 1,
   },
