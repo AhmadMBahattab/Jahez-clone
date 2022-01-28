@@ -16,6 +16,7 @@ const MainScreen = ({ resturantsArray }) => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [locationEnabeled, setlocationEnabeled] = useState(false);
+  const [openSearch, setopenSearch] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -37,9 +38,17 @@ const MainScreen = ({ resturantsArray }) => {
     setVisible(!visible);
   };
 
+  const toogleOpenSearch = () => {
+    setopenSearch(!openSearch);
+  };
+
   return (
     <>
-      <NavBar openMap={toggleOverlay} />
+      <NavBar
+        openMap={toggleOverlay}
+        openSearch={openSearch}
+        toogleOpenSearch={toogleOpenSearch}
+      />
       <ResturantsLocations
         resturantsArray={resturantsArray}
         visible={visible}

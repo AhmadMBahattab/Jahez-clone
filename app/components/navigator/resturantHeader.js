@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   singleHeaderItem: {
-    marginTop: StatusBar.currentHeight * 1,
     width: windowWidth / 3.5,
     flexDirection: "row",
     justifyContent: "space-between",

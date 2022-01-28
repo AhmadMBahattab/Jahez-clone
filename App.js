@@ -1,18 +1,30 @@
 import "react-native-gesture-handler";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Platform,
+  SafeAreaView,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./app/navigations/AppNavigator";
-import MainScreen from "./app/screens/MainScreen";
-import SingleResturantScreen from "./app/screens/SingleResturantScreen";
-import ResturantsData from "./app/data/ResturantsData";
 
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
       <StatusBar barStyle={"light-content"} backgroundColor={"red"} />
-      <NavigationContainer>
-        <AppNavigator />
-      </NavigationContainer>
+      {Platform.OS == "ios" ? (
+        <SafeAreaView>
+          <NavigationContainer>
+            <AppNavigator />
+          </NavigationContainer>
+        </SafeAreaView>
+      ) : (
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      )}
     </View>
 
     /* <SingleResturantScreen resturant={ResturantsData.getResturants()} /> */

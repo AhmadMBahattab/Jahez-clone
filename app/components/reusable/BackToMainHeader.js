@@ -47,12 +47,9 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     height: StatusBar.currentHeight * 2,
     justifyContent: "space-between",
-    paddingLeft: 10,
-    paddingRight: 10,
     flexDirection: "row",
   },
   singleHeaderItem: {
-    marginTop: StatusBar.currentHeight,
     width: windowWidth / 3.5,
     flexDirection: "row",
     justifyContent: "space-between",
