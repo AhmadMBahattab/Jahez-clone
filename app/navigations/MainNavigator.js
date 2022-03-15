@@ -31,9 +31,10 @@ const MainNavigator = () => {
       />
       <Stack.Screen
         name="الصنف"
-        // options={{
-        //   header: (props) => <ResturantHeader />,
-        // }}
+        options={{
+          // header: (props) => <ResturantHeader />,
+          headerShown: false,
+        }}
         component={singleMenuItemScreen}
       />
     </Stack.Navigator>

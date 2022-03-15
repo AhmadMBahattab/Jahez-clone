@@ -21,6 +21,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 import { useNavigation } from "@react-navigation/native";
+import Cart from "../reusable/cart";
 
 const Stack = createStackNavigator();
 
@@ -48,10 +49,7 @@ const ResturantHeader = () => {
         <TouchableOpacity>
           <FontAwesome name="search" color={"white"} size={22} />
         </TouchableOpacity>
-
-        <TouchableOpacity>
-          <MaterialCommunityIcons name="cart" color={"white"} size={22} />
-        </TouchableOpacity>
+        <Cart />
         <TouchableOpacity>
           <MaterialIcons name="more-vert" color={"white"} size={22} />
         </TouchableOpacity>

@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
   container: {
     margin: 10,
     padding: 15,
-    height: windowHeight / 5,
     backgroundColor: "white",
     borderRadius: 20,
     borderColor: "lightgray",

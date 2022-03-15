@@ -45,9 +45,17 @@ const SingleResturant = ({ item }) => {
             </View>
             <View style={styles.infoContainer}>
               <View style={styles.singleInfoLayout}>
-                <Text style={{ fontSize: 16 }}>
-                  {item.nameEN} - {item.nameArb}
-                </Text>
+                <View
+                  style={{
+                    width: "75%",
+                    alignItems: "flex-end",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Text style={{ fontSize: 16 }}>
+                    {item.nameEN} - {item.nameArb}
+                  </Text>
+                </View>
 
                 <Text style={{ fontSize: 12, color: "gray" }}>6.0 Kms</Text>
               </View>
