@@ -18,6 +18,7 @@ const MainScreen = ({ resturantsArray }) => {
   const [locationEnabeled, setlocationEnabeled] = useState(false);
   const [openSearch, setopenSearch] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [searchResturant, setsearchResturant] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -42,12 +43,17 @@ const MainScreen = ({ resturantsArray }) => {
     setopenSearch(!openSearch);
   };
 
+  let filteResturants = resturantsArray.filter((resturant) =>
+    resturant.nameArb.toLowerCase().includes(searchResturant.toLowerCase())
+  );
   return (
     <>
       <NavBar
         openMap={toggleOverlay}
-        openSearch={openSearch}
         toogleOpenSearch={toogleOpenSearch}
+        openSearch={openSearch}
+        searchResturant={searchResturant}
+        setsearchResturant={setsearchResturant}
       />
       <ResturantsLocations
         resturantsArray={resturantsArray}
@@ -55,7 +61,7 @@ const MainScreen = ({ resturantsArray }) => {
         closeMap={toggleOverlay}
       />
       <ScrollView>
-        {resturantsArray.map((item) => (
+        {filteResturants.map((item) => (
           <View key={item.id}>
             <SingleResturant item={item} />
           </View>

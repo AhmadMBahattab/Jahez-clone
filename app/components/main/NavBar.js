@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -15,6 +15,7 @@ import {
   SimpleLineIcons,
   FontAwesome,
   AntDesign,
+  MaterialIcons,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -23,8 +24,19 @@ const jahezTitle = require("../../photos/jahez-title.jpg");
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const NavBar = ({ openMap, openSearch, toogleOpenSearch }) => {
+const NavBar = ({
+  openMap,
+  openSearch,
+  toogleOpenSearch,
+  searchResturant,
+  setsearchResturant,
+}) => {
   const navigation = useNavigation();
+
+  const clearInput = () => {
+    setsearchResturant("");
+  };
+
   return (
     <View style={styles.navBarContainer}>
       {!openSearch ? (
@@ -64,7 +76,10 @@ const NavBar = ({ openMap, openSearch, toogleOpenSearch }) => {
         <View style={styles.searchContainer}>
           <View style={{ width: windowWidth / 1.3 }}>
             <Input
+              autoFocus
               style={{ color: "white", marginLeft: 10 }}
+              maxLength={15}
+              value={searchResturant}
               textAlign="right"
               placeholder="بحث..."
               placeholderTextColor="lightgray"
@@ -72,12 +87,31 @@ const NavBar = ({ openMap, openSearch, toogleOpenSearch }) => {
               selectionColor="orange"
               inputContainerStyle={{ borderColor: "rgba(0,0,0,0)" }}
               leftIcon={
-                <TouchableOpacity onPress={toogleOpenSearch}>
+                <TouchableOpacity
+                  onPress={() => {
+                    toogleOpenSearch();
+                    clearInput();
+                  }}
+                >
                   <View style={{ padding: 10 }}>
                     <AntDesign name="arrowright" size={24} color="white" />
                   </View>
                 </TouchableOpacity>
               }
+              rightIcon={
+                searchResturant.length <= 0 ? (
+                  <View></View>
+                ) : (
+                  <TouchableOpacity onPress={clearInput}>
+                    <View style={{ padding: 10 }}>
+                      <MaterialIcons name="clear" size={24} color="black" />
+                    </View>
+                  </TouchableOpacity>
+                )
+              }
+              onChangeText={(value) => {
+                setsearchResturant(value);
+              }}
             />
           </View>
 
