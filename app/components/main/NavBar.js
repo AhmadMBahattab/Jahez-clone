@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
   navBarContainer: {
     padding: 20,
     justifyContent: "space-between",
+    alignItems: "center",
     flexDirection: "row",
     backgroundColor: "red",
     height: StatusBar.currentHeight * 2,
@@ -141,6 +142,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     marginTop: 5,
     width: windowWidth - windowWidth / 9,
+    height: windowHeight / 14,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
