@@ -9,28 +9,14 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./app/navigations/AppNavigator";
-import SingleMenuItemScreen from "./app/screens/singleResturant/singleMenuItemScreen";
-
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
       <StatusBar barStyle={"light-content"} backgroundColor={"red"} />
-      {Platform.OS == "ios" ? (
-        <SafeAreaView>
-          <NavigationContainer>
-            <AppNavigator />
-          </NavigationContainer>
-        </SafeAreaView>
-      ) : (
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
-      )}
-
-      {/* <SingleMenuItemScreen /> */}
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
     </View>
-
-    /* <SingleResturantScreen resturant={ResturantsData.getResturants()} /> */
   );
 }
 

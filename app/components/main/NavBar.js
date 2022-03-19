@@ -125,12 +125,13 @@ const NavBar = ({
 };
 const styles = StyleSheet.create({
   navBarContainer: {
-    padding: 20,
+    padding: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     backgroundColor: "red",
-    height: StatusBar.currentHeight * 2,
   },
   singleNavBarItem: {
     marginTop: 5,
@@ -140,7 +141,6 @@ const styles = StyleSheet.create({
     color: "white",
   },
   searchContainer: {
-    marginTop: 5,
     width: windowWidth - windowWidth / 9,
     height: windowHeight / 14,
     flexDirection: "row",
