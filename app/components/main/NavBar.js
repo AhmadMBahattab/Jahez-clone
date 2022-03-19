@@ -141,8 +141,9 @@ const styles = StyleSheet.create({
     color: "white",
   },
   searchContainer: {
+    marginTop: 12,
     width: windowWidth - windowWidth / 9,
-    height: windowHeight / 14,
+    height: windowHeight / 30,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
