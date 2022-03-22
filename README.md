@@ -9,4 +9,10 @@ Personal project not published on the app store where it's a clone the front end
 
 <img src ="screenshots/1.png" width=300 />
 
-<img src ="2.png" width=300 />
+<img src ="screenshots/2.png" width=300 />
+
+<img src ="screenshots/3.png" width=300 />
+
+<img src ="screenshots/4.png" width=300 />
+
+<img src ="screenshots/5.png" width=300 />
