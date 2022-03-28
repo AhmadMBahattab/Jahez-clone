@@ -45,7 +45,7 @@ const BackToMainHeader = ({ title }) => {
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: "red",
-    height: StatusBar.currentHeight * 2,
+    height: StatusBar.currentHeight * 1.5,
     justifyContent: "space-between",
     flexDirection: "row",
   },

@@ -6,16 +6,16 @@ import {
   ScrollView,
   Image,
   Dimensions,
-  Button,
-  StatusBar,
+  FlatList,
 } from "react-native";
-import { Input, Icon } from "react-native-elements";
+import { Input, Icon, Overlay } from "react-native-elements";
 import {
   MaterialCommunityIcons,
   SimpleLineIcons,
   FontAwesome,
   AntDesign,
   MaterialIcons,
+  Ionicons,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -23,6 +23,8 @@ const jahezTitle = require("../../photos/jahez-title.jpg");
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+
+const dataList = [{ key: "1" }, { key: "2" }, { key: "3" }, { key: "4" }];
 
 const NavBar = ({
   openMap,
@@ -32,9 +34,13 @@ const NavBar = ({
   setsearchResturant,
 }) => {
   const navigation = useNavigation();
+  const [visible, setVisible] = useState(false);
 
   const clearInput = () => {
     setsearchResturant("");
+  };
+  const toggleOverlay = () => {
+    setVisible(!visible);
   };
 
   return (
@@ -67,10 +73,51 @@ const NavBar = ({
             <TouchableOpacity onPress={toogleOpenSearch}>
               <FontAwesome name="search" color={"white"} size={22} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={toggleOverlay}>
               <FontAwesome name="sort" color={"white"} size={22} />
             </TouchableOpacity>
           </View>
+
+          <Overlay isVisible={visible}>
+            <View
+              style={{
+                padding: 10,
+                width: windowWidth / 1.3,
+              }}
+            >
+              <View style={styles.foodTypeButtons}>
+                <View style={styles.singleFoodTypeContainer}>
+                  <View style={styles.singleFoodType}>
+                    <Text>1</Text>
+                  </View>
+                  <Text>All</Text>
+                </View>
+                <View style={styles.singleFoodTypeContainer}>
+                  <View style={styles.singleFoodType}>
+                    <Text>2</Text>
+                  </View>
+                  <Text>Fast food</Text>
+                </View>
+                <View style={styles.singleFoodTypeContainer}>
+                  <View style={styles.singleFoodType}>
+                    <Text>3</Text>
+                  </View>
+                  <Text>Healthy</Text>
+                </View>
+              </View>
+
+              <TouchableOpacity>
+                <View style={styles.applayFilterButton}>
+                  <MaterialCommunityIcons
+                    name="check-bold"
+                    size={30}
+                    color="red"
+                    onPress={toggleOverlay}
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Overlay>
         </>
       ) : (
         <View style={styles.searchContainer}>
@@ -147,6 +194,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  foodTypeButtons: {
+    margin: 5,
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  singleFoodTypeContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  singleFoodType: {
+    margin: 5,
+    padding: 10,
+    backgroundColor: "red",
+    borderRadius: 20,
+  },
+
+  applayFilterButton: {
+    marginTop: 10,
+    alignItems: "center",
+    borderColor: "lightgray",
+    borderTopWidth: 1,
   },
 });
 export default NavBar;
