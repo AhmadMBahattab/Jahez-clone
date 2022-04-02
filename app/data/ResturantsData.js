@@ -3,7 +3,7 @@ const resturantsArray = [
     id: 1,
     nameEN: "Herfy",
     nameArb: "هرفي",
-    type: "",
+    type: "fastFood",
     location: {
       latitude: 24.4216146,
       longitude: 46.6417285,
@@ -85,7 +85,7 @@ const resturantsArray = [
     id: 2,
     nameEN: "Subway",
     nameArb: "صب واي",
-    type: "",
+    type: "healthFood",
     location: {
       latitude: 24.7836146,
       longitude: 46.6417285,
@@ -151,7 +151,7 @@ const resturantsArray = [
     id: 3,
     nameEN: "Hamburgini",
     nameArb: "هامبرقيني",
-    type: "",
+    type: "fastFood",
     location: {
       latitude: 24.7213146,
       longitude: 46.6737285,
@@ -222,7 +222,7 @@ const resturantsArray = [
     id: 4,
     nameEN: "Dominos pizza",
     nameArb: "دومينوز بيتزا",
-    type: "",
+    type: "fastFood",
     location: {
       latitude: 24.6216146,
       longitude: 46.6317285,
@@ -309,7 +309,7 @@ const resturantsArray = [
     id: 5,
     nameEN: "Burger king",
     nameArb: "برغر كنق",
-    type: "",
+    type: "fastFood",
     location: {
       latitude: 24.7213146,
       longitude: 46.6917285,

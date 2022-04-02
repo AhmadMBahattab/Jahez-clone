@@ -20,6 +20,13 @@ const MainScreen = ({ resturantsArray }) => {
   const [visible, setVisible] = useState(false);
   const [searchResturant, setsearchResturant] = useState("");
 
+  const [allResturantsArray, setallResturantsArray] = useState([
+    ...resturantsArray,
+  ]);
+
+  const [filterdResturants, setfilterdResturants] = useState([]);
+  const [filterType, setfilterType] = useState("all");
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -42,8 +49,12 @@ const MainScreen = ({ resturantsArray }) => {
   const toogleOpenSearch = () => {
     setopenSearch(!openSearch);
   };
+  const setFilterResturantsType = (type) => {
+    console.log(type);
+    setfilterType(type);
+  };
 
-  let filteResturants = resturantsArray.filter((resturant) =>
+  let filteResturants = allResturantsArray.filter((resturant) =>
     resturant.nameArb.toLowerCase().includes(searchResturant.toLowerCase())
   );
   return (
@@ -56,7 +67,7 @@ const MainScreen = ({ resturantsArray }) => {
         setsearchResturant={setsearchResturant}
       />
       <ResturantsLocations
-        resturantsArray={resturantsArray}
+        resturantsArray={allResturantsArray}
         visible={visible}
         closeMap={toggleOverlay}
       />

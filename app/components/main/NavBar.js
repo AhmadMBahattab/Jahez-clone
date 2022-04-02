@@ -7,6 +7,8 @@ import {
   Image,
   Dimensions,
   FlatList,
+  TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import { Input, Icon, Overlay } from "react-native-elements";
 import {
@@ -16,9 +18,10 @@ import {
   AntDesign,
   MaterialIcons,
   Ionicons,
+  Feather,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 const jahezTitle = require("../../photos/jahez-title.jpg");
 
 const windowWidth = Dimensions.get("window").width;
@@ -35,12 +38,17 @@ const NavBar = ({
 }) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
+  const [filterType, setfilterType] = useState("all");
 
   const clearInput = () => {
     setsearchResturant("");
   };
   const toggleOverlay = () => {
     setVisible(!visible);
+  };
+  const setFilterResturantsType = (type) => {
+    console.log(type);
+    setfilterType(type);
   };
 
   return (
@@ -87,23 +95,49 @@ const NavBar = ({
             >
               <View style={styles.foodTypeButtons}>
                 <View style={styles.singleFoodTypeContainer}>
-                  <View style={styles.singleFoodType}>
-                    <Text>1</Text>
-                  </View>
+                  <TouchableOpacity
+                    onPress={() => setFilterResturantsType("all")}
+                  >
+                    <View style={styles.singleFoodType}>
+                      <Feather
+                        name="check"
+                        size={35}
+                        color={filterType == "all" ? "red" : "gray"}
+                      />
+                    </View>
+                  </TouchableOpacity>
                   <Text>All</Text>
                 </View>
-                <View style={styles.singleFoodTypeContainer}>
-                  <View style={styles.singleFoodType}>
-                    <Text>2</Text>
+
+                <TouchableOpacity
+                  onPress={() => setFilterResturantsType("fastFood")}
+                >
+                  <View style={styles.singleFoodTypeContainer}>
+                    <View style={styles.singleFoodType}>
+                      <MaterialCommunityIcons
+                        name="hamburger"
+                        size={35}
+                        color={filterType == "fastFood" ? "red" : "gray"}
+                      />
+                    </View>
+                    <Text>Fast food</Text>
                   </View>
-                  <Text>Fast food</Text>
-                </View>
-                <View style={styles.singleFoodTypeContainer}>
-                  <View style={styles.singleFoodType}>
-                    <Text>3</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={() => setFilterResturantsType("healthyFood")}
+                >
+                  <View style={styles.singleFoodTypeContainer}>
+                    <View style={styles.singleFoodType}>
+                      <MaterialCommunityIcons
+                        name="food-apple"
+                        size={35}
+                        color={filterType == "healthyFood" ? "red" : "gray"}
+                      />
+                    </View>
+                    <Text>Healthy</Text>
                   </View>
-                  <Text>Healthy</Text>
-                </View>
+                </TouchableOpacity>
               </View>
 
               <TouchableOpacity>
@@ -206,13 +240,15 @@ const styles = StyleSheet.create({
   },
   singleFoodType: {
     margin: 5,
-    padding: 10,
-    backgroundColor: "red",
+    padding: 5,
     borderRadius: 20,
+    borderColor: "gray",
+    borderWidth: 1,
   },
 
   applayFilterButton: {
     marginTop: 10,
+    paddingTop: 10,
     alignItems: "center",
     borderColor: "lightgray",
     borderTopWidth: 1,
