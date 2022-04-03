@@ -27,28 +27,25 @@ const jahezTitle = require("../../photos/jahez-title.jpg");
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const dataList = [{ key: "1" }, { key: "2" }, { key: "3" }, { key: "4" }];
-
 const NavBar = ({
   openMap,
   openSearch,
   toogleOpenSearch,
   searchResturant,
   setsearchResturant,
+  filterType,
+  setfilterType,
+  setFilterResturantsType,
+  applyFilterResturantsType,
 }) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
-  const [filterType, setfilterType] = useState("all");
 
   const clearInput = () => {
     setsearchResturant("");
   };
   const toggleOverlay = () => {
     setVisible(!visible);
-  };
-  const setFilterResturantsType = (type) => {
-    console.log(type);
-    setfilterType(type);
   };
 
   return (
@@ -140,16 +137,17 @@ const NavBar = ({
                 </TouchableOpacity>
               </View>
 
-              <TouchableOpacity>
-                <View style={styles.applayFilterButton}>
-                  <MaterialCommunityIcons
-                    name="check-bold"
-                    size={30}
-                    color="red"
-                    onPress={toggleOverlay}
-                  />
-                </View>
-              </TouchableOpacity>
+              <View style={styles.applayFilterButton}>
+                <MaterialCommunityIcons
+                  name="check-bold"
+                  size={30}
+                  color="red"
+                  onPress={() => {
+                    applyFilterResturantsType();
+                    toggleOverlay();
+                  }}
+                />
+              </View>
             </View>
           </Overlay>
         </>

@@ -85,7 +85,7 @@ const resturantsArray = [
     id: 2,
     nameEN: "Subway",
     nameArb: "صب واي",
-    type: "healthFood",
+    type: "healthyFood",
     location: {
       latitude: 24.7836146,
       longitude: 46.6417285,

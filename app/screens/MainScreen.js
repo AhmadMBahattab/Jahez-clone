@@ -20,11 +20,9 @@ const MainScreen = ({ resturantsArray }) => {
   const [visible, setVisible] = useState(false);
   const [searchResturant, setsearchResturant] = useState("");
 
-  const [allResturantsArray, setallResturantsArray] = useState([
+  const [filterdResturants, setfilterdResturants] = useState([
     ...resturantsArray,
   ]);
-
-  const [filterdResturants, setfilterdResturants] = useState([]);
   const [filterType, setfilterType] = useState("all");
 
   useEffect(() => {
@@ -54,7 +52,18 @@ const MainScreen = ({ resturantsArray }) => {
     setfilterType(type);
   };
 
-  let filteResturants = allResturantsArray.filter((resturant) =>
+  const applyFilterResturantsType = () => {
+    let resArray;
+    if (filterType == "all") {
+      return setfilterdResturants([...resturantsArray]);
+    }
+    resArray = resturantsArray.filter((item) => {
+      return item.type === filterType;
+    });
+    setfilterdResturants(resArray);
+  };
+
+  let filteResturants = filterdResturants.filter((resturant) =>
     resturant.nameArb.toLowerCase().includes(searchResturant.toLowerCase())
   );
   return (
@@ -62,12 +71,16 @@ const MainScreen = ({ resturantsArray }) => {
       <NavBar
         openMap={toggleOverlay}
         toogleOpenSearch={toogleOpenSearch}
-        openSearch={openSearch}
         searchResturant={searchResturant}
         setsearchResturant={setsearchResturant}
+        filterType={filterType}
+        setfilterType={setfilterType}
+        openSearch={openSearch}
+        setFilterResturantsType={setFilterResturantsType}
+        applyFilterResturantsType={applyFilterResturantsType}
       />
       <ResturantsLocations
-        resturantsArray={allResturantsArray}
+        resturantsArray={filterdResturants}
         visible={visible}
         closeMap={toggleOverlay}
       />
