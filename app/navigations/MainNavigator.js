@@ -25,7 +25,8 @@ const MainNavigator = () => {
       <Stack.Screen
         name="القائمة"
         options={{
-          header: (props) => <ResturantHeader />,
+          // header: (props) => <ResturantHeader />,
+          headerShown: false,
         }}
         component={SingleResturantScreen}
       />

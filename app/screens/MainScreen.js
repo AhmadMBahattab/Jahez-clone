@@ -5,6 +5,8 @@ import SingleResturant from "../components/reusable/singleResturant";
 import { View, Text, StyleSheet, ScrollView, Keyboard } from "react-native";
 import * as Location from "expo-location";
 
+let EnglishLitters = /[a-zA-Z]/;
+
 const MainScreen = ({ resturantsArray }) => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -17,8 +19,6 @@ const MainScreen = ({ resturantsArray }) => {
     ...resturantsArray,
   ]);
   const [filterType, setfilterType] = useState("all");
-
-  let EnglishLitters = /[a-zA-Z]/;
 
   useEffect(() => {
     (async () => {
