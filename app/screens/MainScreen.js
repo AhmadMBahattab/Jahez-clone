@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/main/NavBar";
 import ResturantsLocations from "../components/main/ResturantsLocations";
 import SingleResturant from "../components/reusable/singleResturant";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Dimensions,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, Keyboard } from "react-native";
 import * as Location from "expo-location";
 
 const MainScreen = ({ resturantsArray }) => {
@@ -24,6 +17,8 @@ const MainScreen = ({ resturantsArray }) => {
     ...resturantsArray,
   ]);
   const [filterType, setfilterType] = useState("all");
+
+  let EnglishLitters = /[a-zA-Z]/;
 
   useEffect(() => {
     (async () => {
@@ -63,9 +58,17 @@ const MainScreen = ({ resturantsArray }) => {
     setfilterdResturants(resArray);
   };
 
-  let filteResturants = filterdResturants.filter((resturant) =>
-    resturant.nameArb.toLowerCase().includes(searchResturant.toLowerCase())
-  );
+  let filteResturants = [];
+  if (EnglishLitters.test(searchResturant) == true) {
+    filteResturants = filterdResturants.filter((resturant) =>
+      resturant.nameEN.toLowerCase().includes(searchResturant.toLowerCase())
+    );
+  } else {
+    filteResturants = filterdResturants.filter((resturant) =>
+      resturant.nameArb.toLowerCase().includes(searchResturant.toLowerCase())
+    );
+  }
+
   return (
     <>
       <NavBar
@@ -85,6 +88,19 @@ const MainScreen = ({ resturantsArray }) => {
         closeMap={toggleOverlay}
       />
       <ScrollView>
+        {filteResturants.length == 0 && (
+          <View
+            style={{
+              marginTop: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 16, color: "red" }}>
+              لا يوجد عنصر مشابه...
+            </Text>
+          </View>
+        )}
         {filteResturants.map((item) => (
           <View key={item.id}>
             <SingleResturant item={item} />
