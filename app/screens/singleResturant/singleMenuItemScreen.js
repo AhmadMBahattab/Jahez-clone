@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   StatusBar,
   ImageBackground,
+  RefreshControl,
 } from "react-native";
 import { FAB } from "react-native-elements";
 import {
@@ -22,8 +23,11 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const singleMenuItemScreen = ({ route }) => {
+  console.log(route.params);
   const navigation = useNavigation();
-  const [singleMenuItem, setsingleMenuItem] = useState({ ...route.params });
+  const [singleMenuItem, setsingleMenuItem] = useState({
+    ...route.params,
+  });
   const [numOfSingleMenuItem, setnumOfSingleMenuItem] = useState(1);
 
   const increeseItems = () => {
@@ -39,6 +43,11 @@ const singleMenuItemScreen = ({ route }) => {
       return;
     }
     return;
+  };
+  const addItemToMyCart = (item) => {
+    let myCart = [...route.params.myCart];
+    myCart.push(item);
+    route.params.setmyCart(myCart);
   };
 
   return (
@@ -76,7 +85,7 @@ const singleMenuItemScreen = ({ route }) => {
             {/* <TouchableOpacity>
               <MaterialCommunityIcons name="cart" color={"white"} size={22} />
             </TouchableOpacity> */}
-            <Cart />
+            <Cart myCart={route.params.myCart} />
           </View>
         </View>
       </ImageBackground>
@@ -129,7 +138,16 @@ const singleMenuItemScreen = ({ route }) => {
               <Text style={{ marginRight: 10, color: "orange", fontSize: 16 }}>
                 أضف الى السلة
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  addItemToMyCart({
+                    image: singleMenuItem.image,
+                    name: singleMenuItem.name,
+                    price: singleMenuItem.price,
+                    numberOfThisItem: numOfSingleMenuItem,
+                  })
+                }
+              >
                 <View style={[styles.singleButton, { backgroundColor: "red" }]}>
                   <FontAwesome name="check" size={20} color="orange" />
                 </View>

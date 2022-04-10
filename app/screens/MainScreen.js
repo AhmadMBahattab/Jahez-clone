@@ -8,6 +8,8 @@ import * as Location from "expo-location";
 let EnglishLitters = /[a-zA-Z]/;
 
 const MainScreen = ({ resturantsArray }) => {
+  const [myCart, setmyCart] = useState([]);
+
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [locationEnabeled, setlocationEnabeled] = useState(false);
@@ -103,7 +105,11 @@ const MainScreen = ({ resturantsArray }) => {
         )}
         {filteResturants.map((item) => (
           <View key={item.id}>
-            <SingleResturant item={item} />
+            <SingleResturant
+              item={item}
+              myCart={myCart}
+              setmyCart={setmyCart}
+            />
           </View>
         ))}
       </ScrollView>

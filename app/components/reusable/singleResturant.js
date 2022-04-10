@@ -14,9 +14,10 @@ import { useNavigation } from "@react-navigation/native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const SingleResturant = ({ item }) => {
+const SingleResturant = ({ item, myCart, setmyCart }) => {
   const navigation = useNavigation();
   const [liked, setliked] = useState(false);
+
   const rightAction = () => {
     return (
       <View style={styles.favoritButton}>
@@ -35,7 +36,11 @@ const SingleResturant = ({ item }) => {
   return (
     <Swipeable renderRightActions={rightAction}>
       <>
-        <TouchableOpacity onPress={() => navigation.navigate("القائمة", item)}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("القائمة", { item, myCart, setmyCart })
+          }
+        >
           <View style={styles.singeResturantContainer}>
             <View style={styles.image}>
               <Image

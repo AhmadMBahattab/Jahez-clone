@@ -32,6 +32,7 @@ const ResturantHeader = ({
   searchResturant,
   setsearchResturant,
   openSearch,
+  myCart,
 }) => {
   const navigation = useNavigation();
 
@@ -115,7 +116,7 @@ const ResturantHeader = ({
           <View></View>
         )}
 
-        <Cart />
+        <Cart myCart={myCart} />
         <TouchableOpacity>
           <MaterialIcons name="more-vert" color={"white"} size={22} />
         </TouchableOpacity>

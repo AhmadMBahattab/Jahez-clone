@@ -16,8 +16,13 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const SingleResturantScreen = ({ route }) => {
+  console.log(route.params);
   const navigation = useNavigation();
-  const [singleResturant, setsingleResturant] = useState({ ...route.params });
+  const [singleResturant, setsingleResturant] = useState({
+    ...route.params.item,
+  });
+  const [myCart, setmyCart] = useState([...route.params.myCart]);
+
   const [isFullMenu, setisFullMenu] = useState(false);
   const [isSingleMenu, setisSingleMenu] = useState(false);
   const [openSearch, setopenSearch] = useState(false);
@@ -96,6 +101,7 @@ const SingleResturantScreen = ({ route }) => {
         searchResturant={searchResturant}
         setsearchResturant={setsearchResturant}
         openSearch={openSearch}
+        myCart={route.params.myCart}
       />
       <View style={styles.container}>
         <ScrollView style={styles.menuContainer}>
@@ -110,6 +116,8 @@ const SingleResturantScreen = ({ route }) => {
                       onPress={() =>
                         navigation.navigate("الصنف", {
                           ...item,
+                          myCart: route.params.myCart,
+                          setmyCart: route.params.setmyCart,
                         })
                       }
                     >

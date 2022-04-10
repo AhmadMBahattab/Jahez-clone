@@ -9,17 +9,17 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Badge, Icon, withBadge } from "react-native-elements";
 
-const Cart = () => {
+const Cart = ({ myCart }) => {
   const navigation = useNavigation();
   return (
     <>
-      <TouchableOpacity onPress={() => navigation.navigate("السلة")}>
+      <TouchableOpacity onPress={() => navigation.navigate("سلتي")}>
         <View style={styles.cartContainer}>
           <View>
             <MaterialCommunityIcons name="cart" color={"white"} size={25} />
           </View>
           <Badge
-            value={0}
+            value={myCart.length}
             containerStyle={{ position: "absolute", bottom: 20, right: 20 }}
             status="warning"
           />
