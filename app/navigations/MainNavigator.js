@@ -13,6 +13,7 @@ const windowHeight = Dimensions.get("window").height;
 import { useNavigation } from "@react-navigation/native";
 import WalletScreen from "../screens/WalletScreen";
 import singleMenuItemScreen from "../screens/singleResturant/singleMenuItemScreen";
+import MyCartScreen from "../screens/singleResturant/myCartScreen";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,14 @@ const MainNavigator = () => {
           headerShown: false,
         }}
         component={singleMenuItemScreen}
+      />
+      <Stack.Screen
+        name="السلة"
+        options={{
+          // header: (props) => <ResturantHeader />,
+          headerShown: true,
+        }}
+        component={MyCartScreen}
       />
     </Stack.Navigator>
   );

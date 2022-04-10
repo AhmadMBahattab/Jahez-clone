@@ -89,7 +89,6 @@ const SingleResturantScreen = ({ route }) => {
     });
   }
 
-  console.log(fullMenuArray);
   return (
     <>
       <ResturantHeader

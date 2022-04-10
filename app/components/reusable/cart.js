@@ -6,12 +6,14 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 
+import { useNavigation } from "@react-navigation/native";
 import { Avatar, Badge, Icon, withBadge } from "react-native-elements";
 
 const Cart = () => {
+  const navigation = useNavigation();
   return (
     <>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("السلة")}>
         <View style={styles.cartContainer}>
           <View>
             <MaterialCommunityIcons name="cart" color={"white"} size={25} />
