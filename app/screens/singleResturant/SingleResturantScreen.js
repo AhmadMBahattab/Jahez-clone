@@ -16,7 +16,6 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const SingleResturantScreen = ({ route }) => {
-  console.log(route.params);
   const navigation = useNavigation();
   const [singleResturant, setsingleResturant] = useState({
     ...route.params.item,

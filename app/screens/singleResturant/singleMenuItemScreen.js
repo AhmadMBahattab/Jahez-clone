@@ -23,7 +23,6 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const singleMenuItemScreen = ({ route }) => {
-  console.log(route.params);
   const navigation = useNavigation();
   const [singleMenuItem, setsingleMenuItem] = useState({
     ...route.params,

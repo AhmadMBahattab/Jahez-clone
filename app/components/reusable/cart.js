@@ -11,9 +11,12 @@ import { Avatar, Badge, Icon, withBadge } from "react-native-elements";
 
 const Cart = ({ myCart }) => {
   const navigation = useNavigation();
+
   return (
     <>
-      <TouchableOpacity onPress={() => navigation.navigate("سلتي")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("سلتي", { myCart: [...myCart] })}
+      >
         <View style={styles.cartContainer}>
           <View>
             <MaterialCommunityIcons name="cart" color={"white"} size={25} />
