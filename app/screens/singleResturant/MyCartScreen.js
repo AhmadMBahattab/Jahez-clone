@@ -1,5 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import React, { useState } from "react";
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const MyCartScreen = ({ route }) => {
   console.log(route.params.myCart);
@@ -29,6 +32,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
+    width: windowWidth / 1.1,
   },
 });
 
