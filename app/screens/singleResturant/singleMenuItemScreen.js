@@ -27,7 +27,9 @@ const singleMenuItemScreen = ({ route }) => {
   const [singleMenuItem, setsingleMenuItem] = useState({
     ...route.params,
   });
+
   const [numOfSingleMenuItem, setnumOfSingleMenuItem] = useState(1);
+  console.log(54);
 
   const increeseItems = () => {
     if (numOfSingleMenuItem < 30) {
@@ -46,6 +48,7 @@ const singleMenuItemScreen = ({ route }) => {
   const addItemToMyCart = (item) => {
     let myCart = [...route.params.myCart];
     myCart.push(item);
+
     route.params.setmyCart(myCart);
   };
 
@@ -144,6 +147,10 @@ const singleMenuItemScreen = ({ route }) => {
                     name: singleMenuItem.name,
                     price: singleMenuItem.price,
                     numberOfThisItem: numOfSingleMenuItem,
+                    resturantName: {
+                      nameArb: singleMenuItem.resturantName.nameArb,
+                      nameEN: singleMenuItem.resturantName.nameEN,
+                    },
                   })
                 }
               >

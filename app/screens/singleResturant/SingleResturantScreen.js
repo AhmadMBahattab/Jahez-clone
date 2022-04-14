@@ -84,6 +84,8 @@ const SingleResturantScreen = ({ route }) => {
     setopenSearch(!openSearch);
   };
 
+  // console.log(122);
+
   let filtterMenu = [];
   if (arrayOfMenuItems && arrayOfMenuItems.length > 0) {
     filtterMenu = arrayOfMenuItems.filter((menu) => {
@@ -95,96 +97,107 @@ const SingleResturantScreen = ({ route }) => {
 
   return (
     <>
-      <ResturantHeader
-        toogleOpenSearch={toogleOpenSearch}
-        searchResturant={searchResturant}
-        setsearchResturant={setsearchResturant}
-        openSearch={openSearch}
-        myCart={route.params.myCart}
-      />
-      <View style={styles.container}>
-        <ScrollView style={styles.menuContainer}>
-          <SingleResturant item={singleResturant} />
+      {singleResturant ? (
+        <>
+          <ResturantHeader
+            toogleOpenSearch={toogleOpenSearch}
+            searchResturant={searchResturant}
+            setsearchResturant={setsearchResturant}
+            openSearch={openSearch}
+            myCart={route.params.myCart}
+          />
+          <View style={styles.container}>
+            <ScrollView style={styles.menuContainer}>
+              <SingleResturant item={singleResturant} />
 
-          {arrayOfMenuItems && arrayOfMenuItems.length > 0 && isFullMenu ? (
-            filtterMenu.map((menu) => (
-              <>
-                {menu.map((item, index) => (
+              {arrayOfMenuItems && arrayOfMenuItems.length > 0 && isFullMenu ? (
+                filtterMenu.map((menu) => (
                   <>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("الصنف", {
-                          ...item,
-                          myCart: route.params.myCart,
-                          setmyCart: route.params.setmyCart,
-                        })
-                      }
-                    >
-                      <View style={styles.singleMenuItem} key={index}>
-                        <View style={styles.image}>
-                          <Image
-                            source={item.image}
-                            style={{
-                              width: windowWidth,
-                              height: windowHeight / 4,
-                            }}
-                          />
-                        </View>
-                        <View style={styles.info}>
-                          <Text>{item.name}</Text>
-                          <Text>{item.price} SAR</Text>
-                        </View>
+                    {menu.map((item, index) => (
+                      <>
+                        <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate("الصنف", {
+                              ...item,
+                              myCart: route.params.myCart,
+                              setmyCart: route.params.setmyCart,
+                              resturantName: {
+                                nameArb: singleResturant.nameArb,
+                                nameEN: singleResturant.nameEN,
+                              },
+                            })
+                          }
+                        >
+                          <View style={styles.singleMenuItem} key={index}>
+                            <View style={styles.image}>
+                              <Image
+                                source={item.image}
+                                style={{
+                                  width: windowWidth,
+                                  height: windowHeight / 4,
+                                }}
+                              />
+                            </View>
+                            <View style={styles.info}>
+                              <Text>{item.name}</Text>
+                              <Text>{item.price} SAR</Text>
+                            </View>
+                          </View>
+                        </TouchableOpacity>
+                      </>
+                    ))}
+                  </>
+                ))
+              ) : (
+                <View
+                  style={{ justifyContent: "center", alignItems: "center" }}
+                ></View>
+              )}
+
+              {isSingleMenu &&
+                arrayOfTypeOfMenu.map((item, index) => (
+                  <>
+                    <View style={styles.singleMenuItem} key={index}>
+                      <View style={styles.image}>
+                        <Image
+                          source={item.image}
+                          style={{
+                            width: windowWidth,
+                            height: windowHeight / 4,
+                          }}
+                        />
                       </View>
-                    </TouchableOpacity>
+                      <View style={styles.info}>
+                        <Text>{item.name}</Text>
+                        <Text>{item.price} SAR</Text>
+                      </View>
+                    </View>
                   </>
                 ))}
-              </>
-            ))
-          ) : (
-            <View
-              style={{ justifyContent: "center", alignItems: "center" }}
-            ></View>
-          )}
+            </ScrollView>
 
-          {isSingleMenu &&
-            arrayOfTypeOfMenu.map((item, index) => (
-              <>
-                <View style={styles.singleMenuItem} key={index}>
-                  <View style={styles.image}>
-                    <Image
-                      source={item.image}
-                      style={{ width: windowWidth, height: windowHeight / 4 }}
-                    />
-                  </View>
-                  <View style={styles.info}>
-                    <Text>{item.name}</Text>
-                    <Text>{item.price} SAR</Text>
-                  </View>
-                </View>
-              </>
-            ))}
-        </ScrollView>
-
-        <View style={styles.menuNavBarContainer}>
-          <ScrollView style={styles.menuNavBarScroll} horizontal={true}>
-            <TouchableOpacity onPress={sortToFullMenu}>
-              <Text style={styles.singleNavBarItem}>القائمة كاملة</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={sortToMainDishs}>
-              <Text style={styles.singleNavBarItem}>الوجبات الرئيسية</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={sortToSideDishs}>
-              <Text style={styles.singleNavBarItem}>الطلبات الجانبية</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={sortToDesserts}>
-              <Text style={styles.singleNavBarItem}>الحلويات</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={sortToDrinks}>
-              <Text style={styles.singleNavBarItem}>المشروبات</Text>
-            </TouchableOpacity>
-          </ScrollView>
-        </View>
-      </View>
+            <View style={styles.menuNavBarContainer}>
+              <ScrollView style={styles.menuNavBarScroll} horizontal={true}>
+                <TouchableOpacity onPress={sortToFullMenu}>
+                  <Text style={styles.singleNavBarItem}>القائمة كاملة</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={sortToMainDishs}>
+                  <Text style={styles.singleNavBarItem}>الوجبات الرئيسية</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={sortToSideDishs}>
+                  <Text style={styles.singleNavBarItem}>الطلبات الجانبية</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={sortToDesserts}>
+                  <Text style={styles.singleNavBarItem}>الحلويات</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={sortToDrinks}>
+                  <Text style={styles.singleNavBarItem}>المشروبات</Text>
+                </TouchableOpacity>
+              </ScrollView>
+            </View>
+          </View>
+        </>
+      ) : null}
     </>
   );
 };
