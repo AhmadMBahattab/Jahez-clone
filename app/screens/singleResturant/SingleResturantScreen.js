@@ -20,7 +20,6 @@ const SingleResturantScreen = ({ route }) => {
   const [singleResturant, setsingleResturant] = useState({
     ...route.params.item,
   });
-  const [myCart, setmyCart] = useState([...route.params.myCart]);
 
   const [isFullMenu, setisFullMenu] = useState(false);
   const [isSingleMenu, setisSingleMenu] = useState(false);

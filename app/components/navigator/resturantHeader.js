@@ -98,7 +98,7 @@ const ResturantHeader = ({
             />
           </View>
 
-          <Cart />
+          <Cart myCart={myCart} />
           <TouchableOpacity>
             <MaterialIcons name="more-vert" color={"white"} size={22} />
           </TouchableOpacity>

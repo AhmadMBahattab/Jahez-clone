@@ -11,7 +11,7 @@ const MainScreen = ({ resturantsArray }) => {
   const [myCart, setmyCart] = useState([
     {
       name: "herfy",
-      price: 30,
+      price: 30.0,
       numberOfThisItem: 2,
       resturantName: {
         nameArb: "هرفي",

@@ -73,47 +73,49 @@ const MyCartScreen = ({ route }) => {
               <Text style={{ color: "red" }}>Mohammadiyah</Text>
             </View>
             <View style={styles.itemsContainer}>
-              <View style={styles.item}>
-                <View style={styles.itemInfo}>
-                  <View style={{ width: "40%" }}>
-                    <Text>CHEESEBURGER</Text>
+              {myFinalCart.map((item) => (
+                <View style={styles.item}>
+                  <View style={styles.itemInfo}>
+                    <View style={{ width: "40%" }}>
+                      <Text>{item.name}</Text>
+                    </View>
+
+                    <Text>SAR {item.price}</Text>
                   </View>
+                  <View style={styles.itemNumber}>
+                    <View></View>
+                    <View style={{ paddingRight: 5 }}>
+                      <View style={styles.increeseAndDecreeseBtn}>
+                        <TouchableOpacity onPress={decreeseItems}>
+                          <View
+                            style={[
+                              styles.singleButton,
+                              { backgroundColor: "#FFC107" },
+                            ]}
+                          >
+                            <AntDesign name="minus" size={18} color="red" />
+                          </View>
+                        </TouchableOpacity>
 
-                  <Text>SAR 120.00</Text>
-                </View>
-                <View style={styles.itemNumber}>
-                  <View></View>
-                  <View style={{ paddingRight: 5 }}>
-                    <View style={styles.increeseAndDecreeseBtn}>
-                      <TouchableOpacity onPress={decreeseItems}>
-                        <View
-                          style={[
-                            styles.singleButton,
-                            { backgroundColor: "#FFC107" },
-                          ]}
-                        >
-                          <AntDesign name="minus" size={18} color="red" />
-                        </View>
-                      </TouchableOpacity>
+                        <Text style={{ fontSize: 20 }}>
+                          {numOfSingleMenuItem}
+                        </Text>
 
-                      <Text style={{ fontSize: 20 }}>
-                        {numOfSingleMenuItem}
-                      </Text>
-
-                      <TouchableOpacity onPress={increeseItems}>
-                        <View
-                          style={[
-                            styles.singleButton,
-                            { backgroundColor: "red" },
-                          ]}
-                        >
-                          <AntDesign name="plus" size={18} color="orange" />
-                        </View>
-                      </TouchableOpacity>
+                        <TouchableOpacity onPress={increeseItems}>
+                          <View
+                            style={[
+                              styles.singleButton,
+                              { backgroundColor: "red" },
+                            ]}
+                          >
+                            <AntDesign name="plus" size={18} color="orange" />
+                          </View>
+                        </TouchableOpacity>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
+              ))}
             </View>
             <View style={styles.moveOnContainer}>
               <View style={styles.notesInput}>
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   itemInfo: {
-      flexDirection: "row",
+    flexDirection: "row",
     justifyContent: "space-between",
     padding: 10,
     paddingRight: 30,
