@@ -8,7 +8,17 @@ import * as Location from "expo-location";
 let EnglishLitters = /[a-zA-Z]/;
 
 const MainScreen = ({ resturantsArray }) => {
-  const [myCart, setmyCart] = useState([]);
+  const [myCart, setmyCart] = useState([
+    {
+      name: "herfy",
+      price: 30,
+      numberOfThisItem: 2,
+      resturantName: {
+        nameArb: "هرفي",
+        nameEN: "herfy-test",
+      },
+    },
+  ]);
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);

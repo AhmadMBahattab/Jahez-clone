@@ -143,7 +143,6 @@ const singleMenuItemScreen = ({ route }) => {
               <TouchableOpacity
                 onPress={() =>
                   addItemToMyCart({
-                    image: singleMenuItem.image,
                     name: singleMenuItem.name,
                     price: singleMenuItem.price,
                     numberOfThisItem: numOfSingleMenuItem,
