@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import {
   FontAwesome,
@@ -89,7 +90,8 @@ const MyCartScreen = ({ route }) => {
 
               <Text style={{ color: "red" }}>Mohammadiyah</Text>
             </View>
-            <View style={styles.itemsContainer}>
+            <ScrollView style={styles.itemsContainer}>
+              {/* <View style={styles.itemsContainer}> */}
               {myFinalCart.map((item, index) => (
                 <View style={styles.item} key={index}>
                   <View style={styles.itemInfo}>
@@ -97,7 +99,7 @@ const MyCartScreen = ({ route }) => {
                       <Text>{item.name}</Text>
                     </View>
 
-                    <Text>SAR {item.price * item.numberOfThisItem}</Text>
+                    <Text>SAR {item.price * item.numberOfThisItem}.00</Text>
                   </View>
                   <View style={styles.itemNumber}>
                     <View></View>
@@ -116,7 +118,7 @@ const MyCartScreen = ({ route }) => {
                           </View>
                         </TouchableOpacity>
 
-                        <Text style={{ fontSize: 20 }}>
+                        <Text style={{ fontSize: 16, color: "red" }}>
                           {item.numberOfThisItem}
                         </Text>
 
@@ -137,7 +139,8 @@ const MyCartScreen = ({ route }) => {
                   </View>
                 </View>
               ))}
-            </View>
+              {/* </View> */}
+            </ScrollView>
 
             <View style={styles.moveOnContainer}>
               <View style={styles.notesInput}>
@@ -194,6 +197,10 @@ const styles = StyleSheet.create({
 
   itemsContainer: {
     padding: 20,
+    height: windowHeight / 2.3,
+  },
+  item: {
+    paddingBottom: 20,
   },
   itemInfo: {
     flexDirection: "row",

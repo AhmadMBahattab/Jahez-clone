@@ -156,21 +156,35 @@ const SingleResturantScreen = ({ route }) => {
               {isSingleMenu &&
                 arrayOfTypeOfMenu.map((item, index) => (
                   <>
-                    <View style={styles.singleMenuItem} key={index}>
-                      <View style={styles.image}>
-                        <Image
-                          source={item.image}
-                          style={{
-                            width: windowWidth,
-                            height: windowHeight / 4,
-                          }}
-                        />
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate("الصنف", {
+                          ...item,
+                          myCart: route.params.myCart,
+                          setmyCart: route.params.setmyCart,
+                          resturantName: {
+                            nameArb: singleResturant.nameArb,
+                            nameEN: singleResturant.nameEN,
+                          },
+                        })
+                      }
+                    >
+                      <View style={styles.singleMenuItem} key={index}>
+                        <View style={styles.image}>
+                          <Image
+                            source={item.image}
+                            style={{
+                              width: windowWidth,
+                              height: windowHeight / 4,
+                            }}
+                          />
+                        </View>
+                        <View style={styles.info}>
+                          <Text>{item.name}</Text>
+                          <Text>{item.price} SAR</Text>
+                        </View>
                       </View>
-                      <View style={styles.info}>
-                        <Text>{item.name}</Text>
-                        <Text>{item.price} SAR</Text>
-                      </View>
-                    </View>
+                    </TouchableOpacity>
                   </>
                 ))}
             </ScrollView>
