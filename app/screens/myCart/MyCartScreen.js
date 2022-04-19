@@ -11,6 +11,7 @@ import {
   AntDesign,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { Input } from "react-native-elements";
 import * as Location from "expo-location";
 
 const windowWidth = Dimensions.get("window").width;
@@ -22,6 +23,18 @@ const MyCartScreen = ({ route }) => {
   const [numOfSingleMenuItem, setnumOfSingleMenuItem] = useState(1);
 
   console.log(route.params);
+
+  useEffect(() => {
+    let myTempCart = [...route.params.myCart];
+    let myFinalCart = [];
+
+    myTempCart.map((item, index) => {
+      myFinalCart.push({ id: index, ...item });
+    });
+    setmyFinalCart(myFinalCart);
+  }, []);
+
+  console.log(myFinalCart);
 
   // useEffect(() => {
   //   (async () => {
@@ -73,8 +86,8 @@ const MyCartScreen = ({ route }) => {
               <Text style={{ color: "red" }}>Mohammadiyah</Text>
             </View>
             <View style={styles.itemsContainer}>
-              {myFinalCart.map((item) => (
-                <View style={styles.item}>
+              {myFinalCart.map((item, index) => (
+                <View style={styles.item} key={index}>
                   <View style={styles.itemInfo}>
                     <View style={{ width: "40%" }}>
                       <Text>{item.name}</Text>
@@ -117,13 +130,31 @@ const MyCartScreen = ({ route }) => {
                 </View>
               ))}
             </View>
+
             <View style={styles.moveOnContainer}>
               <View style={styles.notesInput}>
-                <Text>tttt</Text>
+                <Input
+                  placeholder="اضف ملاحظات (باللغة اللإنجليزية)"
+                  textAlign="center"
+                  style={{ color: "black", fontSize: 15 }}
+                  selectionColor="orange"
+                  placeholderTextColor="red"
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                  inputContainerStyle={{ borderColor: "rgba(0,0,0,0)" }}
+                />
               </View>
               <TouchableOpacity>
                 <View style={styles.moveOnButton}>
-                  <Text>استمرار</Text>
+                  <View></View>
+                  <View></View>
+                  <View style={{ flexDirection: "row", paddingRight: 10 }}>
+                    <Text
+                      style={{ color: "red", fontSize: 18, paddingLeft: 5 }}
+                    >
+                      استمرار
+                    </Text>
+                    <FontAwesome name="chevron-left" size={24} color="red" />
+                  </View>
                 </View>
               </TouchableOpacity>
             </View>
@@ -192,7 +223,10 @@ const styles = StyleSheet.create({
     borderTopColor: "lightgray",
   },
   moveOnButton: {
-    padding: 20,
+    padding: 10,
+    paddingBottom: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 

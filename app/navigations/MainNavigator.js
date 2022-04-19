@@ -13,7 +13,7 @@ const windowHeight = Dimensions.get("window").height;
 import { useNavigation } from "@react-navigation/native";
 import WalletScreen from "../screens/WalletScreen";
 import SingleMenuItemScreen from "../screens/singleResturant/singleMenuItemScreen";
-import MyCartScreen from "../screens/singleResturant/MyCartScreen";
+import MyCartScreen from "../screens/myCart/MyCartScreen";
 
 const Stack = createStackNavigator();
 

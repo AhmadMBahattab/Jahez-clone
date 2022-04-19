@@ -28,6 +28,7 @@ const singleMenuItemScreen = ({ route }) => {
     ...route.params,
   });
 
+  const [myCart, setmyCart] = useState([...route.params.myCart]);
   const [numOfSingleMenuItem, setnumOfSingleMenuItem] = useState(1);
   console.log(54);
 
@@ -46,9 +47,7 @@ const singleMenuItemScreen = ({ route }) => {
     return;
   };
   const addItemToMyCart = (item) => {
-    let myCart = [...route.params.myCart];
     myCart.push(item);
-
     route.params.setmyCart(myCart);
   };
 
