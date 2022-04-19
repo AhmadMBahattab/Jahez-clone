@@ -22,8 +22,6 @@ const MyCartScreen = ({ route }) => {
   const [myFinalCart, setmyFinalCart] = useState([...route.params.myCart]);
   const [numOfSingleMenuItem, setnumOfSingleMenuItem] = useState(1);
 
-  console.log(route.params);
-
   useEffect(() => {
     let myTempCart = [...route.params.myCart];
     let myFinalCart = [];
@@ -34,7 +32,7 @@ const MyCartScreen = ({ route }) => {
     setmyFinalCart(myFinalCart);
   }, []);
 
-  console.log(myFinalCart);
+  // console.log(myFinalCart);
 
   // useEffect(() => {
   //   (async () => {
@@ -50,19 +48,25 @@ const MyCartScreen = ({ route }) => {
   //     setLocation(location);
   //   })();
   // }, []);
-  const increeseItems = () => {
-    if (numOfSingleMenuItem < 30) {
-      setnumOfSingleMenuItem(numOfSingleMenuItem + 1);
-      return;
-    }
+  const increeseItems = (itemId) => {
+    let myNewFinalCart = [...myFinalCart];
+    if (myNewFinalCart[itemId].numberOfThisItem >= 10) return;
+    myNewFinalCart[itemId].numberOfThisItem =
+      myNewFinalCart[itemId].numberOfThisItem + 1;
+
+    setmyFinalCart(myNewFinalCart);
+    console.log(myFinalCart[itemId].numberOfThisItem);
+
     return;
   };
-  const decreeseItems = () => {
-    if (numOfSingleMenuItem > 1) {
-      setnumOfSingleMenuItem(numOfSingleMenuItem - 1);
-      return;
-    }
-    return;
+  const decreeseItems = (itemId) => {
+    let myNewFinalCart = [...myFinalCart];
+    if (myNewFinalCart[itemId].numberOfThisItem <= 1) return;
+    myNewFinalCart[itemId].numberOfThisItem =
+      myNewFinalCart[itemId].numberOfThisItem - 1;
+
+    console.log(myFinalCart[itemId].numberOfThisItem);
+    return setmyFinalCart(myNewFinalCart);
   };
   return (
     <>
@@ -93,13 +97,15 @@ const MyCartScreen = ({ route }) => {
                       <Text>{item.name}</Text>
                     </View>
 
-                    <Text>SAR {item.price}</Text>
+                    <Text>SAR {item.price * item.numberOfThisItem}</Text>
                   </View>
                   <View style={styles.itemNumber}>
                     <View></View>
                     <View style={{ paddingRight: 5 }}>
                       <View style={styles.increeseAndDecreeseBtn}>
-                        <TouchableOpacity onPress={decreeseItems}>
+                        <TouchableOpacity
+                          onPress={() => decreeseItems(item.id)}
+                        >
                           <View
                             style={[
                               styles.singleButton,
@@ -111,10 +117,12 @@ const MyCartScreen = ({ route }) => {
                         </TouchableOpacity>
 
                         <Text style={{ fontSize: 20 }}>
-                          {numOfSingleMenuItem}
+                          {item.numberOfThisItem}
                         </Text>
 
-                        <TouchableOpacity onPress={increeseItems}>
+                        <TouchableOpacity
+                          onPress={() => increeseItems(item.id)}
+                        >
                           <View
                             style={[
                               styles.singleButton,
