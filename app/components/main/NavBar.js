@@ -22,7 +22,7 @@ import {
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const jahezTitle = require("../../photos/jahez-title.jpg");
+const jahezTitle = require("../../photos/jahez-titelV2.png");
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
