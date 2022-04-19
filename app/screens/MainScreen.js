@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/main/NavBar";
 import ResturantsLocations from "../components/main/ResturantsLocations";
 import SingleResturant from "../components/reusable/singleResturant";
-import { View, Text, StyleSheet, ScrollView, Keyboard } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Keyboard,
+  RefreshControl,
+} from "react-native";
 import * as Location from "expo-location";
 
 let EnglishLitters = /[a-zA-Z]/;
@@ -99,7 +106,7 @@ const MainScreen = ({ resturantsArray }) => {
         visible={visible}
         closeMap={toggleOverlay}
       />
-      <ScrollView>
+      <ScrollView refreshControl={<RefreshControl refreshing={false} />}>
         {filteResturants.length == 0 && (
           <View
             style={{
